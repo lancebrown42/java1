@@ -2,7 +2,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- *  TODO
+ *  Pay check takes user input for hours worked and pay rate
+ *  and calculates gross and net pay with a tax breakdown
  *  
  * @author lance brown
  * @version 1.0
@@ -52,7 +53,14 @@ public class PayCheckLB {
 			dblLocalTax = calculateLocalTax(dblGrossPay);
 			dblFICATax = calculateFICATax(dblGrossPay);
 			dblNetPay = dblGrossPay - dblFederalTax - dblStateTax - dblLocalTax - dblFICATax;
-			
+			System.out.printf("Your Gross Pay is--> %.2f\n", dblGrossPay);
+			System.out.printf("Federal is --------> %.2f\n", dblFederalTax);
+			System.out.printf("State Tax is-------> %.2f\n", dblStateTax);
+			System.out.printf("Local Tax is-------> %.2f\n", dblLocalTax);
+			System.out.printf("FICA Tax is--------> %.2f\n", dblFICATax);
+			System.out.println("-----------------------");
+			System.out.printf("Net Pay is---------> %.2f\n", dblNetPay);
+			System.out.println();
 			
 		
 		}
@@ -76,7 +84,7 @@ public class PayCheckLB {
 		return dblGrossPay;
 	}
 	/**
-	 * 
+	 * Calculates federal tax
 	 * @param dblGrossPay
 	 * @return dblFederalTax
 	 */
@@ -88,7 +96,7 @@ public class PayCheckLB {
 	}
 	
 	/**
-	 * 
+	 * calculates state tax
 	 * @param dblGrossPay
 	 * @return dblStateTax
 	 */
@@ -99,7 +107,7 @@ public class PayCheckLB {
 	}
 	
 	/**
-	 * 
+	 * calculates local tax
 	 * @param dblGrossPay
 	 * @return dblLocalTax
 	 */
@@ -111,7 +119,7 @@ public class PayCheckLB {
 	
 	
 	/**
-	 * 
+	 * calculates FICA tax
 	 * @param dblGrossPay
 	 * @return dblFICATax
 	 */
