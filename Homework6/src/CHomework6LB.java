@@ -2,7 +2,7 @@
 
 
 /**
- *  TODO
+ *  Manipulates strings in various ways without using built-in string methods
  *  
  * @author lance brown
  * @version 1.0
@@ -24,15 +24,15 @@ public class CHomework6LB {
 		
 		
 		//Problem 1 - Count Vowels
-		intVowelCount = VowelCount("I Love Java");
+		intVowelCount = CountVowelsInString("I Love Java");
 		System.out.println("Vowel Count=" + intVowelCount);
 		
 		//PRoblem 2- Find Letter
-		intLetterIndex = FindIndexOfChar("I Love Java", 'J');
+		intLetterIndex = FindLetterInString("I Love Java", 'J');
 		System.out.println("Letter index=" + intLetterIndex);
 		
 		//Problem 3- Count letter
-		intLetterCount = CountLetter("I Love Java", 'A');
+		intLetterCount = CountLetterInString("I Love Java", 'A');
 		System.out.println("Letter Count=" + intLetterCount);
 		
 		//Problem 4- Left
@@ -65,11 +65,11 @@ public class CHomework6LB {
 		System.out.println("Word Count=" + intWordCount);
 	}
 	/**
-	 * 
+	 * Counts number of vowels in a string
 	 * @param strInput
 	 * @return intCount
 	 */
-	public static int VowelCount(String strInput) {
+	public static int CountVowelsInString(String strInput) {
 		
 		//declare variables
 		int intCount = 0;
@@ -112,7 +112,7 @@ public class CHomework6LB {
 	 * @param chrInput
 	 * @return intIndex
 	 */
-	public static int FindIndexOfChar(String strInput, char chrInput) {
+	public static int FindLetterInString(String strInput, char chrInput) {
 		//declare vars
 		int intIndex = 0;
 		int intLength = 0;
@@ -129,13 +129,13 @@ public class CHomework6LB {
 	}
 	
 	/**
-	 * 
+	 * Counts occurrences of given character in a string
 	 * @param strInput
 	 * @param chrInput
 	 * @return intCount
 	 */
 	
-	public static int CountLetter(String strInput, char chrInput) {
+	public static int CountLetterInString(String strInput, char chrInput) {
 		//declare variables
 		int intCount = 0;
 		int intLength = 0;
@@ -150,12 +150,15 @@ public class CHomework6LB {
 	}
 	
 	/**
-	 * 
+	 * Clips a substring of given length from a string beginning at index 0 
 	 * @param strSource
 	 * @param intLength
 	 * @return strSub
 	 */
 	public static String Left(String strSource, int intLength) {
+		if(intLength > strSource.length()) {
+			intLength = strSource.length();
+		}
 		char[] chrSub = new char[intLength];
 		for(int i = 0; i < intLength; i++) {
 			chrSub[i] = strSource.charAt(i);
@@ -165,12 +168,15 @@ public class CHomework6LB {
 	}
 	
 	/**
-	 * 
+	 * Clips a substring of given length from a string ending at the end of the string
 	 * @param strSource
 	 * @param intLength
 	 * @return strSub
 	 */
 	public static String Right(String strSource, int intLength) {
+		if(intLength > strSource.length()) {
+			intLength = strSource.length();
+		}
 		char[] chrSub = new char[intLength];
 		for(int i = 0; i < intLength; i++) {
 			chrSub[i] = strSource.charAt(strSource.length() - 1 - i);
@@ -180,7 +186,7 @@ public class CHomework6LB {
 		return strSub;
 	}
 	/**
-	 * 
+	 * clips a substring from a string using the VB SubString method syntax
 	 * @param strSource
 	 * @param intLength
 	 * @param intStartIndex
@@ -189,10 +195,14 @@ public class CHomework6LB {
 	
 	public static String VBSubString(String strSource, int intStartIndex, int intLength) {
 		char[] chrSub = new char[intLength];
+		if(intStartIndex < 0) {
+			intStartIndex = 0;
+		}
 		int intEndIndex = intStartIndex + intLength;
 		if(intEndIndex >= strSource.length()) {
 			intEndIndex = strSource.length() - 1;
 		}
+		
 		for(int i=intStartIndex; i < intEndIndex; i++) {
 			chrSub[i - intStartIndex] = strSource.charAt(i);
 		}
@@ -202,7 +212,7 @@ public class CHomework6LB {
 	}
 	
 	/**
-	 * 
+	 * clips a substring from a string using the Java SubString method syntax
 	 * @param strSource
 	 * @param intStartIndex
 	 * @param intStopIndex
@@ -210,6 +220,18 @@ public class CHomework6LB {
 	 */
 	public static String JavaSubString(String strSource, int intStartIndex, int intStopIndex) {
 		int intLength = intStopIndex - intStartIndex;
+		int intSwap = 0;
+		if(intStopIndex < intStartIndex) {//if params are in wrong order swap them
+			intSwap = intStartIndex;
+			intStartIndex = intStopIndex;
+			intStopIndex = intSwap;
+		}
+		if(intStopIndex >= strSource.length()) {
+			intStopIndex = strSource.length() - 1;
+		}
+		if(intStartIndex < 0) {
+			intStartIndex = 0;
+		}
 		char[] chrSub = new char[intLength];
 		for(int i=intStartIndex; i < intStartIndex + intLength; i++) {
 			chrSub[i-intStartIndex] = strSource.charAt(i);
@@ -220,7 +242,7 @@ public class CHomework6LB {
 	}
 	
 	/**
-	 * 
+	 * Compares two strings to determine equivalence
 	 * @param strLeft
 	 * @param strRight
 	 * @return blnSame

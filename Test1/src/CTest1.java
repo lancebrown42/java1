@@ -17,7 +17,7 @@ public class CTest1 {
 	public static void main(String[] args) {
 
 		//header
-		System.out.print("Lance Brown = Loan Amortization Schedule \nClass - IT-161-400");
+		System.out.print("Lance Brown = Loan Amortization Schedule \nClass - IT-161-400\n\n");
 		
 		//declare variables
 		double dblLoanAmount = 0;
@@ -98,6 +98,7 @@ public class CTest1 {
 			intInput = Integer.parseInt(strBuffer);
 		} catch(Exception e) {
 			System.out.println(e.toString());
+			intInput = ReadIntegerFromUser();
 		}
 		return intInput;
 	}
@@ -118,6 +119,7 @@ public class CTest1 {
 			dblInput = Float.parseFloat(strBuffer);
 		} catch(Exception e) {
 			System.out.println(e.toString());
+			dblInput = ReaddoubleFromUser();
 		}
 		return dblInput;
 	}
